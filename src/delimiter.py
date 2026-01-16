@@ -8,7 +8,7 @@ def split_nodes_delimiter(old_nodes, delimiter, text_type):
             continue
         split_list = node.text.split(delimiter)
         if len(split_list) % 2 == 0:
-            raise ValueError("Invalid delimiter")
+            raise ValueError("Invalid markdown, formatted section not closed")
 
         for i in range(len(split_list)):
             if split_list[i] == "":
