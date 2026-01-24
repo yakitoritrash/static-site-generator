@@ -14,8 +14,6 @@ def block_to_block_type(block):
         return BlockType.HEADING
     if block.startswith("```") and block.endswith("```"):
         return BlockType.CODE
-    if block.startswith("```") and block.endswith("```"):
-        return BlockType.CODE
     if block.startswith(">"):
         for line in lines:
             if not line.startswith(">"):
