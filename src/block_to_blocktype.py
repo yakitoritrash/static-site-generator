@@ -10,7 +10,7 @@ class BlockType(Enum):
 
 def block_to_block_type(block):
     lines = block.split("\n")
-    if block.startswith(("#", "##", "###", "####", "#####", "######")):
+    if block.startswith(("# ", "## ", "### ", "#### ", "##### ", "###### ")):
         return BlockType.HEADING
     if block.startswith("```") and block.endswith("```"):
         return BlockType.CODE
@@ -22,7 +22,7 @@ def block_to_block_type(block):
 
     if block.startswith("* ") or block.startswith("- "):
         for line in lines:
-            if block.startswith("* ") or block.startswith("- "):
+            if not(block.startswith("* ") or block.startswith("- ")):
                 return BlockType.PARAGRAPH
         return BlockType.UNORDERED_LIST
 
