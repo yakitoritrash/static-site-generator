@@ -36,14 +36,15 @@ def split_nodes_link(old_nodes):
         matches = extract_markdown_links(original_text)
         if len(matches) == 0:
             new_nodes.append(old_node)
+            continue
         for link_addr, link in matches:
-            sections = original_text.split(f"[{link_addr}]({link})")
+            sections = original_text.split(f"[{link_addr}]({link})", 1)
             if sections[0] != "":
                 new_nodes.append(TextNode(sections[0], TextType.TEXT))
             new_nodes.append(TextNode(link_addr, TextType.LINK, link))
             original_text = sections[1]
         if original_text != "":
             new_nodes.append(TextNode(original_text, TextType.TEXT))
-        return (new_nodes);
+    return (new_nodes);
 
 
